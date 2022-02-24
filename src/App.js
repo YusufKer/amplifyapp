@@ -1,12 +1,21 @@
+import React from 'react';
 import './App.css';
+
+import { Authenticator } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        This is better than firebase!!
-      </header>
-    </div>
+    <Authenticator>
+      {({ signOut, user }) => (
+        <div className="App">
+          <header>
+            Hey {user.username}, welcome to my channel, with auth!
+          </header>
+          <button onClick={signOut}>Sign out</button>
+        </div>
+      )}
+    </Authenticator>
   );
 }
 
